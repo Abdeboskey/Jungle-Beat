@@ -24,10 +24,20 @@ RSpec.describe LinkedList do
     expect(list.count).to eq(1)
   end
 
-  it 'can return the data in the list as a string' do
+  it 'can append multiple nodes' do
     list = LinkedList.new
     list.append("zango")
+    list.append("boingo")
 
-    expect(list.to_string).to eq("zango")
+    expect(list.head.next_node.data).to eq("boingo")
+    expect(list.count).to eq(2)
+  end
+
+  it 'can return all the data in the list as a string' do
+    list = LinkedList.new
+    list.append("zango")
+    list.append("boingo")
+
+    expect(list.to_string).to eq("zango boingo")
   end
 end
