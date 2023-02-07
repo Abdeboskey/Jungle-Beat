@@ -40,4 +40,38 @@ RSpec.describe LinkedList do
 
     expect(list.to_string).to eq("zango boingo")
   end
+
+  it 'can add a node to the beginning of the list' do
+    list = LinkedList.new
+    list.append("BMO")
+
+    expect(list.to_string).to eq("BMO")
+
+    list.append("Jake")
+    list.prepend("Finn")
+
+    expect(list.to_string).to eq("Finn BMO Jake")
+    expect(list.count).to eq(3)
+  end
+
+  it 'can insert a node at a given index' do
+    list = LinkedList.new
+    list.append("BMO")
+    list.append("Jake")
+    list.prepend("Finn")
+    list.insert(1, "Marceline")
+
+    expect(list.to_string).to eq("Finn Marceline BMO Jake")
+  end
+
+  it 'can find one or more nodes starting at a given index' do
+    list = LinkedList.new
+    list.append("BMO")
+    list.append("Jake")
+    list.prepend("Finn")
+    list.insert(1, "Marceline")
+    
+    expect(list.find(2, 1)).to eq("BMO")
+    expect(list.find(1, 3)).to eq("Marceline BMO Jake")
+  end
 end
