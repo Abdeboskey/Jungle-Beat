@@ -74,4 +74,29 @@ RSpec.describe LinkedList do
     expect(list.find(2, 1)).to eq("BMO")
     expect(list.find(1, 3)).to eq("Marceline BMO Jake")
   end
+
+  it 'can check if the list includes a given string' do
+    list = LinkedList.new
+    list.append("BMO")
+    list.append("Jake")
+    list.prepend("Finn")
+    list.insert(1, "Marceline")
+
+    expect(list.includes?("Finn")).to be(true)
+    expect(list.includes?("Jake")).to be(true)
+    expect(list.includes?("Gunther")).to be(false)
+  end
+
+  it 'can remove and return the last item in the list' do
+    list = LinkedList.new
+    list.append("BMO")
+    list.append("Jake")
+    list.prepend("Finn")
+    list.insert(1, "Marceline")
+
+    expect(list.pop).to eq("Jake")
+    expect(list.to_string).to eq("Finn Marceline BMO")
+    expect(list.pop).to eq("BMO")
+    expect(list.to_string).to eq("Finn Marceline")
+  end
 end
